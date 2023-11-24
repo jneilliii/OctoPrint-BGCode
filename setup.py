@@ -33,7 +33,7 @@ plugin_url = "https://github.com/jneilliii/OctoPrint-BGCode"
 plugin_license = "AGPLv3"
 
 # Any additional requirements besides OctoPrint should be listed here
-plugin_requires = []
+plugin_requires = ["pybgcode @ https://github.com/prusa3d/libbgcode/archive/refs/heads/main.zip"]
 
 ### --------------------------------------------------------------------------------------------------------------------
 ### More advanced options that you usually shouldn't have to touch follow after this point
