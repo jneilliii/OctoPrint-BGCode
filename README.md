@@ -1,6 +1,6 @@
 # BGCode
 
-Plugin allows for the upload and conversion of bgcode files introduced in PrusaSlicer version 2.7.0+.
+Plugin allows for the upload and conversion of bgcode files introduced in PrusaSlicer version 2.7.0+. I cannot control what is in the file during the conversion process, this plugin is just using the tool provided by PrusaResearch to convert from one format to another. If there are issues related to the ascii format file that cause other plugins to not work then you should open an issue on the conflicting plugin's repository, the PrusaResearch repository for the tool [here](https://github.com/prusa3d/libbgcode/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc), or for PrusaSlicer [here](https://github.com/prusa3d/PrusaSlicer/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc). See below for currently known conflicting plugins and related errors. 
 
 ## Prerequisites
 
@@ -27,4 +27,43 @@ Install manually using this URL:
 ## TODO
 
 [X] ~~bundle libbgcode somehow~~
+
+## Known Issues/Plugin Conflicts
+
+- SlicerEstimator: `UnicodeDecodeError: 'utf-8' codec can't decode byte 0x8a in position 1: invalid start byte`
+- DisplayLayerProgress: `Layer indicator not found in file`
+
+---
+
+## Get Help
+
+If you experience issues with this plugin or need assistance please use the issue tracker by clicking issues above.
+
+## Additional Plugins
+
+Check out my other plugins [here](https://plugins.octoprint.org/by_author/#jneilliii)
+
+---
+
+## Sponsors
+- Andreas Lindermayr
+- [@TheTuxKeeper](https://github.com/thetuxkeeper)
+- [@tideline3d](https://github.com/tideline3d/)
+- [SimplyPrint](https://simplyprint.io/)
+- [Andrew Beeman](https://github.com/Kiendeleo)
+- [Calanish](https://github.com/calanish)
+- [Lachlan Bell](https://lachy.io/)
+- [Johnny Bergdal](https://github.com/bergdahl)
+- [Leigh Johnson](https://github.com/leigh-johnson)
+- [Stephen Berry](https://github.com/berrystephenw)
+- [Steve Dougherty](https://github.com/Thynix)
+## Support My Efforts
+I, jneilliii, programmed this plugin for fun and do my best effort to support those that have issues with it, please return the favor and leave me a tip or become a Patron if you find this plugin helpful and want me to continue future development.
+
+[![Patreon](patreon-with-text-new.png)](https://www.patreon.com/jneilliii) [![paypal](paypal-with-text.png)](https://paypal.me/jneilliii)
+
+<small>No paypal.me? Send funds via PayPal to jneilliii&#64;gmail&#46;com
+
+You can use [this](https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=jneilliii@gmail.com) link too. But the normal PayPal fee will be deducted.
+</small>
 
