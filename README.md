@@ -30,7 +30,7 @@ Install manually using this URL:
 
 ## Known Issues/Plugin Conflicts
 
-- SlicerEstimator: `UnicodeDecodeError: 'utf-8' codec can't decode byte 0x8a in position 1: invalid start byte`
+- ~~SlicerEstimator: `UnicodeDecodeError: 'utf-8' codec can't decode byte 0x8a in position 1: invalid start byte`~~ resolved by setting hook order
 - DisplayLayerProgress: `Layer indicator not found in file`
 
 ---
