@@ -26,15 +26,19 @@ class BgcodePlugin(octoprint.plugin.SettingsPlugin
         if extension in bgcode_extensions:
             try:
                 temp_file_path = os.path.join(self.get_plugin_data_folder(), file_object.filename)
+                self._logger.debug(f"saving file to extract from: {temp_file_path}")
                 file_object.save(temp_file_path)
                 gcode_file_path = os.path.join(self.get_plugin_data_folder(), f"{name}.gcode")
-                self._logger.debug(f"converting {temp_file_path}")
+                self._logger.debug(f"converting {temp_file_path} to {gcode_file_path}")
                 bgcode_file = pybgcode.open(temp_file_path, "rb")
                 gcode_file = pybgcode.open(gcode_file_path, "w")
                 pybgcode.from_binary_to_ascii(bgcode_file, gcode_file, verify_checksum=False)
+                self._logger.debug("closing bgcode file objects used during conversion")
                 pybgcode.close(gcode_file)
                 pybgcode.close(bgcode_file)
                 file_wrapper = DiskFileWrapper(path.replace(".bgcode", ".gcode"), gcode_file_path, move=True)
+                self._logger.debug(f"created file wrapper object {file_wrapper}")
+                self._logger.debug(f"removing temporary file {temp_file_path}")
                 os.remove(temp_file_path)
                 return file_wrapper
             except Exception as e:
