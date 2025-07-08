@@ -14,7 +14,7 @@ plugin_package = "octoprint_bgcode"
 plugin_name = "BGCode"
 
 # The plugin's version. Can be overwritten within OctoPrint's internal data via __plugin_version__ in the plugin module
-plugin_version = "0.2.1"
+plugin_version = "0.2.2"
 
 # The plugin's description. Can be overwritten within OctoPrint's internal data via __plugin_description__ in the plugin
 # module
@@ -33,7 +33,7 @@ plugin_url = "https://github.com/jneilliii/OctoPrint-BGCode"
 plugin_license = "AGPLv3"
 
 # Any additional requirements besides OctoPrint should be listed here
-plugin_requires = ["pybgcode @ https://github.com/jneilliii/libbgcode-jneilliii/archive/refs/tags/0.2.0.zip"]
+plugin_requires = ["pybgcode-jneilliii"]
 
 
 ### --------------------------------------------------------------------------------------------------------------------
