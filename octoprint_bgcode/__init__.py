@@ -2,7 +2,7 @@
 from __future__ import absolute_import
 
 import os
-
+import glob
 import octoprint.plugin
 import pybgcode
 from octoprint.filemanager import DiskFileWrapper
@@ -25,6 +25,10 @@ class BgcodePlugin(octoprint.plugin.SettingsPlugin
         name, extension = os.path.splitext(file_object.filename)
         if extension in bgcode_extensions:
             try:
+                # quick cleanup if any gcode files left over from plugin conflicts
+                # https://github.com/jneilliii/OctoPrint-BGCode/issues/15
+                for f in glob.glob(os.path.join(self.get_plugin_data_folder(), "*.gcode")):
+                    os.remove(f)
                 temp_file_path = os.path.join(self.get_plugin_data_folder(), file_object.filename)
                 self._logger.debug(f"saving file to extract from: {temp_file_path}")
                 file_object.save(temp_file_path)
@@ -75,6 +79,13 @@ class BgcodePlugin(octoprint.plugin.SettingsPlugin
             }
         }
 
+    # ~~ Backup additional excludes hook
+
+    def additional_excludes_hook(self, excludes, *args, **kwargs):
+        if "uploads" in excludes:
+            return ["."]
+        return []
+
 
 __plugin_name__ = "BGCode"
 __plugin_pythoncompat__ = ">=3,<4"  # Only Python 3
@@ -89,5 +100,6 @@ def __plugin_load__():
         "octoprint.plugin.softwareupdate.check_config": __plugin_implementation__.get_update_information,
         "octoprint.filemanager.extension_tree": __plugin_implementation__.get_extension_tree,
         "octoprint.filemanager.preprocessor": (__plugin_implementation__.bgcode_upload, 1),
-        "octoprint.server.http.routes": __plugin_implementation__.route_hook
+        "octoprint.server.http.routes": __plugin_implementation__.route_hook,
+        "octoprint.plugin.backup.additional_excludes": __plugin_implementation__.additional_excludes_hook
     }
