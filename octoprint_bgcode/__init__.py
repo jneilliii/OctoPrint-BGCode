@@ -88,7 +88,7 @@ class BgcodePlugin(octoprint.plugin.SettingsPlugin
 
 
 __plugin_name__ = "BGCode"
-__plugin_pythoncompat__ = ">=3,<4"  # Only Python 3
+__plugin_pythoncompat__ = ">=3.8,<4"  # Only Python 3.8+
 
 
 def __plugin_load__():
